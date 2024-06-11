@@ -95,6 +95,8 @@ public class TestTaskTwo extends AbstractTest {
         String aValue = "a position type";
         PositionType positionType = new PositionType(aValue);
         assertEquals(aValue, positionType.toString());
+
+
     }
 
     @Test
@@ -173,4 +175,3 @@ public class TestTaskTwo extends AbstractTest {
     }
 
 }
-

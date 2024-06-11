@@ -2,8 +2,6 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-import static java.lang.System.lineSeparator;
-
 public class Job {
 
     private int id;
@@ -20,12 +18,12 @@ public class Job {
     //  the 'id' field.
 
     public Job() {
-        id = nextId;
+        id=nextId;
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType,CoreCompetency coreCompetency) {
-        this();
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this(); // Calls the default constructor to initialize the ID
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -33,14 +31,16 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    public String toString() {
+        return String.format("%s%s%s", System.lineSeparator(), System.lineSeparator(), System.lineSeparator());
+    }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Job)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
         return id == job.id;
     }
@@ -49,6 +49,7 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -96,32 +97,5 @@ public class Job {
 
     public int getId() {
         return id;
-    }
-
-    @Override
-    public String toString() {
-
-        String dataNotAvailable = "Data not available";
-        if (name == null || name == "") {
-            name = dataNotAvailable;
-        }
-        if (employer == null || employer.getValue() == "") {
-            employer.setValue(dataNotAvailable);
-        }
-        if (location == null || location.getValue() == "") {
-            location.setValue(dataNotAvailable);
-        }
-        if (positionType == null || positionType.getValue() == "") {
-            positionType.setValue(dataNotAvailable);
-        }
-        if (coreCompetency == null || coreCompetency.getValue() == "") {
-            coreCompetency.setValue(dataNotAvailable);
-        }
-        return "\n" + "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
     }
 }
